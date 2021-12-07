@@ -1,0 +1,78 @@
+package ru.dpopkov.knownics.domain.answer;
+
+import ru.dpopkov.knownics.domain.KeyTerm;
+import ru.dpopkov.knownics.domain.Language;
+import ru.dpopkov.knownics.domain.ModifiableEntity;
+import ru.dpopkov.knownics.domain.user.AppUser;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+public class Answer extends ModifiableEntity {
+
+    private AnswerType type;
+    private Map<Language, AnswerText> translations = new HashMap<>();
+    private SourceDetails sourceDetails;
+    private Set<KeyTerm> keyTerms = new HashSet<>();
+    private String comment;
+    private AppUser createdBy;
+    private AppUser modifiedBy;
+
+    public AnswerType getType() {
+        return type;
+    }
+
+    public void setType(AnswerType type) {
+        this.type = type;
+    }
+
+    public Map<Language, AnswerText> getTranslations() {
+        return translations;
+    }
+
+    public void setTranslations(Map<Language, AnswerText> translations) {
+        this.translations = translations;
+    }
+
+    public SourceDetails getSourceDetails() {
+        return sourceDetails;
+    }
+
+    public void setSourceDetails(SourceDetails sourceDetails) {
+        this.sourceDetails = sourceDetails;
+    }
+
+    public Set<KeyTerm> getKeyTerms() {
+        return keyTerms;
+    }
+
+    public void setKeyTerms(Set<KeyTerm> keyTerms) {
+        this.keyTerms = keyTerms;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public AppUser getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(AppUser createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public AppUser getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(AppUser modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+}
