@@ -2,7 +2,7 @@ package ru.dpopkov.knownics.domain;
 
 import ru.dpopkov.knownics.domain.user.AppUser;
 
-public class AbstractTranslation extends ModifiableComponent implements Translation {
+public abstract class AbstractTranslation extends ModifiableComponent implements Translation {
 
     private Language language;
     private TextType type;

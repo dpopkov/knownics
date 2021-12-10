@@ -2,7 +2,7 @@ package ru.dpopkov.knownics.domain;
 
 import java.util.Date;
 
-public class ModifiableComponent {
+public abstract class ModifiableComponent {
 
     protected Date created;
     protected Date modified;

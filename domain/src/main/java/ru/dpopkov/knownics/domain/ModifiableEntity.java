@@ -2,7 +2,7 @@ package ru.dpopkov.knownics.domain;
 
 import java.util.Date;
 
-public class ModifiableEntity extends BaseEntity {
+public abstract class ModifiableEntity extends BaseEntity {
 
     protected Date created;
     protected Date modified;

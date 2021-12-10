@@ -1,6 +1,8 @@
 History of implementation
 -------------------------
 
+##### 2021-12-10
+* Add Repository interfaces to Domain. Closes #7.
 ##### 2021-12-07
 * Implement POJO data model. Closes #2.
 ##### 2021-12-05
