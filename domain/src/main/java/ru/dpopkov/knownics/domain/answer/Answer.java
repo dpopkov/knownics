@@ -20,6 +20,17 @@ public class Answer extends ModifiableEntity {
     private AppUser createdBy;
     private AppUser modifiedBy;
 
+    public Answer() {
+    }
+
+    public Answer(AnswerType type, SourceDetails sourceDetails, String comment, AppUser createdBy, AppUser modifiedBy) {
+        this.type = type;
+        this.sourceDetails = sourceDetails;
+        this.comment = comment;
+        this.createdBy = createdBy;
+        this.modifiedBy = modifiedBy;
+    }
+
     public AnswerType getType() {
         return type;
     }
@@ -74,5 +85,13 @@ public class Answer extends ModifiableEntity {
 
     public void setModifiedBy(AppUser modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+    public void addTranslation(AnswerText translation) {
+        translations.put(translation.getLanguage(), translation);
+    }
+
+    public void addKeyTerm(KeyTerm keyTerm) {
+        keyTerms.add(keyTerm);
     }
 }

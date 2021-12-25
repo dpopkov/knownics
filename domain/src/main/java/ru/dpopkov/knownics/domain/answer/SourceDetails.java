@@ -7,6 +7,11 @@ public class SourceDetails extends ModifiableEntity {
     private Source source;
     private String details;
 
+    public SourceDetails(Source source, String details) {
+        this.source = source;
+        this.details = details;
+    }
+
     public Source getSource() {
         return source;
     }

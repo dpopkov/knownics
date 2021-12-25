@@ -9,6 +9,21 @@ public class KeyTerm extends ModifiableEntity {
     private AppUser createdBy;
     private AppUser modifiedBy;
 
+    public KeyTerm() {
+    }
+
+    public KeyTerm(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public KeyTerm(String name, String description, AppUser createdBy, AppUser modifiedBy) {
+        this.name = name;
+        this.description = description;
+        this.createdBy = createdBy;
+        this.modifiedBy = modifiedBy;
+    }
+
     public String getName() {
         return name;
     }

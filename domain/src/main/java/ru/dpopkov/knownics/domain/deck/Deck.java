@@ -12,6 +12,7 @@ public class Deck extends ModifiableEntity {
     private String description;
     private AppUser owner;
     private Set<FlashCard> flashCards = new HashSet<>();
+    private Set<StudySession> studySessions = new HashSet<>(); // collection of components
 
     public String getName() {
         return name;
@@ -43,5 +44,17 @@ public class Deck extends ModifiableEntity {
 
     public void setFlashCards(Set<FlashCard> flashCards) {
         this.flashCards = flashCards;
+    }
+
+    public Set<StudySession> getStudySessions() {
+        return studySessions;
+    }
+
+    public void setStudySessions(Set<StudySession> studySessions) {
+        this.studySessions = studySessions;
+    }
+
+    public void addFlashCard(FlashCard flashCard) {
+        flashCards.add(flashCard);
     }
 }
