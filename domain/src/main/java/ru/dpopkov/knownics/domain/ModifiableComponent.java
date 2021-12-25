@@ -1,25 +1,25 @@
 package ru.dpopkov.knownics.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public abstract class ModifiableComponent {
 
-    protected Date created;
-    protected Date modified;
+    protected LocalDateTime created;
+    protected LocalDateTime modified;
 
-    public Date getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public Date getModified() {
+    public LocalDateTime getModified() {
         return modified;
     }
 
-    public void setModified(Date modified) {
+    public void setModified(LocalDateTime modified) {
         this.modified = modified;
     }
 }
