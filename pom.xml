@@ -15,7 +15,7 @@
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>ru.dpopkov</groupId>
+    <groupId>ru.dpopkov.knownics</groupId>
     <artifactId>knownics</artifactId>
     <version>0.0.2-SNAPSHOT</version>
     <name>knownics</name>
