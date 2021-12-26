@@ -6,6 +6,7 @@
         <module>domain</module>
         <module>web</module>
         <module>repository-map</module>
+        <module>services</module>
     </modules>
 
     <parent>

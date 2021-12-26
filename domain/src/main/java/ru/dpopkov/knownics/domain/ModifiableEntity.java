@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public abstract class ModifiableEntity extends BaseEntity {
 
-    protected LocalDateTime created;
+    protected LocalDateTime created = LocalDateTime.now();
     protected LocalDateTime modified;
 
     public LocalDateTime getCreated() {

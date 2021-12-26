@@ -1,6 +1,8 @@
 History of implementation
 -------------------------
 
+##### 2021-12-26
+* Add module services. Add CategoryService, CategoryServiceImpl.
 ##### 2021-12-25
 * Add module repository-map. Implement Map based repositories. Closes #5.
 ##### 2021-12-10
