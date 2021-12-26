@@ -2,6 +2,8 @@ package ru.dpopkov.knownics.repository.map;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -10,7 +12,6 @@ import ru.dpopkov.knownics.domain.answer.SourceDetails;
 import ru.dpopkov.knownics.domain.answer.SourceRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.then;
 
 @ExtendWith(MockitoExtension.class)
@@ -19,6 +20,8 @@ class SourceDetailsMapRepositoryTest {
     SourceRepository sourceRepository;
     @InjectMocks
     SourceDetailsMapRepository sourceDetailsMapRepository;
+    @Captor
+    ArgumentCaptor<Source> sourceCaptor;
 
     @Test
     void testSave() {
@@ -28,7 +31,8 @@ class SourceDetailsMapRepositoryTest {
         // When
         sourceDetailsMapRepository.save(sourceDetails);
         // Then
-        then(sourceRepository).should().save(any(Source.class));
+        then(sourceRepository).should().save(sourceCaptor.capture());
+        assertThat(sourceCaptor.getValue().getTitle()).isEqualTo("source-1");
         assertThat(sourceDetails.getId()).isNotNull();
     }
 }

@@ -2,6 +2,8 @@ package ru.dpopkov.knownics.repository.map;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -14,7 +16,6 @@ import ru.dpopkov.knownics.domain.answer.SourceDetailsRepository;
 import ru.dpopkov.knownics.domain.user.AppUser;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.then;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,14 +26,18 @@ class AnswerMapRepositoryTest {
     KeyTermRepository keyTermRepository;
     @InjectMocks
     AnswerMapRepository answerMapRepository;
+    @Captor
+    ArgumentCaptor<KeyTerm> keyTermCaptor;
+    @Captor
+    ArgumentCaptor<SourceDetails> sourceDetailsCaptor;
 
     @Test
     void testSave() {
         // Given
         Answer answer = new Answer();
-        SourceDetails details = new SourceDetails(new Source("source"), "details");
+        SourceDetails details = new SourceDetails(new Source("Spring in Action"), "details");
         answer.setSourceDetails(details);
-        KeyTerm keyTerm = new KeyTerm("Test", "desc");
+        KeyTerm keyTerm = new KeyTerm("Spring", "desc");
         answer.addKeyTerm(keyTerm);
         AppUser author = new AppUser("Author");
         author.setId(123L);
@@ -43,8 +48,10 @@ class AnswerMapRepositoryTest {
         // When
         answerMapRepository.save(answer);
         // Then
-        then(sourceDetailsRepository).should().save(any(SourceDetails.class));
-        then(keyTermRepository).should().save(any(KeyTerm.class));
+        then(sourceDetailsRepository).should().save(sourceDetailsCaptor.capture());
+        then(keyTermRepository).should().save(keyTermCaptor.capture());
+        assertThat(sourceDetailsCaptor.getValue().getSource().getTitle()).isEqualTo("Spring in Action");
+        assertThat(keyTermCaptor.getValue().getName()).isEqualTo("Spring");
         assertThat(answer.getId()).isNotNull();
     }
 }
