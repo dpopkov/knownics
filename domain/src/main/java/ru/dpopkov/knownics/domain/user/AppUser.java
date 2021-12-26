@@ -20,4 +20,19 @@ public class AppUser extends ModifiableEntity {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AppUser)) return false;
+
+        AppUser appUser = (AppUser) o;
+
+        return getUsername().equals(appUser.getUsername());
+    }
+
+    @Override
+    public int hashCode() {
+        return getUsername().hashCode();
+    }
 }

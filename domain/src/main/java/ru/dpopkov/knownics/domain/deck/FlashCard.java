@@ -15,6 +15,14 @@ public class FlashCard extends ModifiableEntity {
     private int totalResets;
     private Deck deck;
 
+    public FlashCard() {
+    }
+
+    public FlashCard(String questionText, String answerText) {
+        this.questionText = questionText;
+        this.answerText = answerText;
+    }
+
     public int getLevel() {
         return level;
     }
@@ -77,5 +85,27 @@ public class FlashCard extends ModifiableEntity {
 
     public void setDeck(Deck deck) {
         this.deck = deck;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FlashCard)) return false;
+
+        FlashCard flashCard = (FlashCard) o;
+
+        if (getQuestionText() != null ? !getQuestionText().equals(flashCard.getQuestionText()) : flashCard.getQuestionText() != null)
+            return false;
+        if (getAnswerText() != null ? !getAnswerText().equals(flashCard.getAnswerText()) : flashCard.getAnswerText() != null)
+            return false;
+        return getDeck() != null ? getDeck().equals(flashCard.getDeck()) : flashCard.getDeck() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getQuestionText() != null ? getQuestionText().hashCode() : 0;
+        result = 31 * result + (getAnswerText() != null ? getAnswerText().hashCode() : 0);
+        result = 31 * result + (getDeck() != null ? getDeck().hashCode() : 0);
+        return result;
     }
 }

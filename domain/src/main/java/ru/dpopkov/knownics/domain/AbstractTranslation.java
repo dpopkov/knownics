@@ -70,4 +70,24 @@ public abstract class AbstractTranslation extends ModifiableComponent implements
                 ", text='" + text + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AbstractTranslation)) return false;
+
+        AbstractTranslation that = (AbstractTranslation) o;
+
+        if (getLanguage() != that.getLanguage()) return false;
+        if (getType() != that.getType()) return false;
+        return getText().equals(that.getText());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getLanguage().hashCode();
+        result = 31 * result + getType().hashCode();
+        result = 31 * result + getText().hashCode();
+        return result;
+    }
 }

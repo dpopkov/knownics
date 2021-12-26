@@ -85,4 +85,23 @@ public class Question extends ModifiableEntity {
     public void setModifiedBy(AppUser modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Question)) return false;
+
+        Question question = (Question) o;
+
+        if (getCategory() != null ? !getCategory().equals(question.getCategory()) : question.getCategory() != null)
+            return false;
+        return getTranslations() != null ? getTranslations().equals(question.getTranslations()) : question.getTranslations() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getCategory() != null ? getCategory().hashCode() : 0;
+        result = 31 * result + (getTranslations() != null ? getTranslations().hashCode() : 0);
+        return result;
+    }
 }

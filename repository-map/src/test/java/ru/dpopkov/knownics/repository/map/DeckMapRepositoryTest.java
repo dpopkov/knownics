@@ -25,8 +25,8 @@ class DeckMapRepositoryTest {
     void testSave() {
         // Given
         Deck deck = new Deck();
-        deck.addFlashCard(new FlashCard());
-        deck.addFlashCard(new FlashCard());
+        deck.addFlashCard(new FlashCard("q1", "a1"));
+        deck.addFlashCard(new FlashCard("q2", "a2"));
         // When
         deckMapRepository.save(deck);
         // Then

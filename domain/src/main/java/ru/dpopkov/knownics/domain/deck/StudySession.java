@@ -1,33 +1,33 @@
 package ru.dpopkov.knownics.domain.deck;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /*
  * Implement as Embedded component.
  */
 public class StudySession {
 
-    private Date started;
-    private Date finished;
+    private LocalDateTime started;
+    private LocalDateTime finished;
     private int currentCardIndex;
     private int successCount;
     private int resetCount;
     // private Deck deck; // m.b not needed - use unidirectional assoc from Deck
 
 
-    public Date getStarted() {
+    public LocalDateTime getStarted() {
         return started;
     }
 
-    public void setStarted(Date started) {
+    public void setStarted(LocalDateTime started) {
         this.started = started;
     }
 
-    public Date getFinished() {
+    public LocalDateTime getFinished() {
         return finished;
     }
 
-    public void setFinished(Date finished) {
+    public void setFinished(LocalDateTime finished) {
         this.finished = finished;
     }
 
@@ -53,5 +53,23 @@ public class StudySession {
 
     public void setResetCount(int resetCount) {
         this.resetCount = resetCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StudySession)) return false;
+
+        StudySession that = (StudySession) o;
+
+        if (!getStarted().equals(that.getStarted())) return false;
+        return getFinished() != null ? getFinished().equals(that.getFinished()) : that.getFinished() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getStarted().hashCode();
+        result = 31 * result + (getFinished() != null ? getFinished().hashCode() : 0);
+        return result;
     }
 }

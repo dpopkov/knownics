@@ -62,4 +62,19 @@ public class KeyTerm extends ModifiableEntity {
                 "name='" + name + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof KeyTerm)) return false;
+
+        KeyTerm keyTerm = (KeyTerm) o;
+
+        return getName().equals(keyTerm.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return getName().hashCode();
+    }
 }

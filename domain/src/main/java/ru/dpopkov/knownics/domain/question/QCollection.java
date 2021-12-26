@@ -53,4 +53,22 @@ public class QCollection extends ModifiableEntity {
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof QCollection)) return false;
+
+        QCollection that = (QCollection) o;
+
+        if (!getTitle().equals(that.getTitle())) return false;
+        return getOwner() != null ? getOwner().equals(that.getOwner()) : that.getOwner() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getTitle().hashCode();
+        result = 31 * result + (getOwner() != null ? getOwner().hashCode() : 0);
+        return result;
+    }
 }

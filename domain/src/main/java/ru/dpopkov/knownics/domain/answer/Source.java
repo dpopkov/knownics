@@ -61,4 +61,25 @@ public class Source extends ModifiableEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Source)) return false;
+
+        Source source = (Source) o;
+
+        if (!getTitle().equals(source.getTitle())) return false;
+        if (getFullTitle() != null ? !getFullTitle().equals(source.getFullTitle()) : source.getFullTitle() != null)
+            return false;
+        return getType() == source.getType();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getTitle().hashCode();
+        result = 31 * result + (getFullTitle() != null ? getFullTitle().hashCode() : 0);
+        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
+        return result;
+    }
 }

@@ -57,4 +57,25 @@ public class Deck extends ModifiableEntity {
     public void addFlashCard(FlashCard flashCard) {
         flashCards.add(flashCard);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Deck)) return false;
+
+        Deck deck = (Deck) o;
+
+        if (!getName().equals(deck.getName())) return false;
+        if (getDescription() != null ? !getDescription().equals(deck.getDescription()) : deck.getDescription() != null)
+            return false;
+        return getOwner() != null ? getOwner().equals(deck.getOwner()) : deck.getOwner() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        result = 31 * result + (getOwner() != null ? getOwner().hashCode() : 0);
+        return result;
+    }
 }

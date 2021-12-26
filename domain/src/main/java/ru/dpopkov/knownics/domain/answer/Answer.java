@@ -94,4 +94,22 @@ public class Answer extends ModifiableEntity {
     public void addKeyTerm(KeyTerm keyTerm) {
         keyTerms.add(keyTerm);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Answer)) return false;
+
+        Answer answer = (Answer) o;
+
+        if (getType() != answer.getType()) return false;
+        return getTranslations() != null ? getTranslations().equals(answer.getTranslations()) : answer.getTranslations() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getType() != null ? getType().hashCode() : 0;
+        result = 31 * result + (getTranslations() != null ? getTranslations().hashCode() : 0);
+        return result;
+    }
 }
