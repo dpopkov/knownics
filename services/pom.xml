@@ -12,12 +12,24 @@
     <artifactId>services</artifactId>
 
     <dependencies>
-        <!-- Domain Project Module -->
+        <!-- Domain Project Modules -->
         <dependency>
             <groupId>ru.dpopkov.knownics</groupId>
             <artifactId>domain</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.dpopkov.knownics</groupId>
+            <artifactId>repository-map</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Spring Context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
         </dependency>
 
         <!-- JUnit -->

@@ -10,6 +10,20 @@
     <artifactId>web</artifactId>
 
     <dependencies>
+        <!-- Project Modules -->
+        <dependency>
+            <groupId>ru.dpopkov.knownics</groupId>
+            <artifactId>domain</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.dpopkov.knownics</groupId>
+            <artifactId>services</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>

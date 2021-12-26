@@ -3,7 +3,9 @@ History of implementation
 
 ##### 2021-12-26
 * Add module services. Add CategoryService, CategoryServiceImpl.
-* Implement equals and hashCode for entities. Closes #9. 
+* Implement equals and hashCode for entities. Closes #9.
+* Load bootstrap data on startup. Closes #10. 
+* Add controller and page for Categories.  
 ##### 2021-12-25
 * Add module repository-map. Implement Map based repositories. Closes #5.
 ##### 2021-12-10
