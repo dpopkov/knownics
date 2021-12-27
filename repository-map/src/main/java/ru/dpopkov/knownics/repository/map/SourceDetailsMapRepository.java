@@ -14,7 +14,7 @@ public class SourceDetailsMapRepository extends AbstractMapRepository<SourceDeta
     }
 
     @Override
-    public SourceDetails save(SourceDetails sourceDetails) {
+    public <S extends SourceDetails> S save(S sourceDetails) {
         final Source source = sourceDetails.getSource();
         if (source.getId() == null) {
             sourceDetails.setSource(sourceRepository.save(source));

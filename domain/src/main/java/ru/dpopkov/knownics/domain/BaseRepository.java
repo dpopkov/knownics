@@ -4,8 +4,8 @@ import java.util.Optional;
 
 public interface BaseRepository<T extends BaseEntity> {
 
-    T save(T object);
-    Iterable<T> saveAll(Iterable<T> objects);
+    <S extends T> S save(S object);
+    <S extends T> Iterable<S> saveAll(Iterable<S> objects);
     Iterable<T> findAll();
     Optional<T> findById(Long id);
     void deleteById(Long id);

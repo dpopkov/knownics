@@ -9,7 +9,7 @@ public abstract class AbstractMapRepository<T extends BaseEntity> implements Bas
     protected final Map<Long, T> map = new HashMap<>();
 
     @Override
-    public T save(T object) {
+    public <S extends T> S save(S object) {
         Long id = nextId();
         object.setId(id);
         map.put(id, object);
@@ -24,10 +24,10 @@ public abstract class AbstractMapRepository<T extends BaseEntity> implements Bas
     }
 
     @Override
-    public Iterable<T> saveAll(Iterable<T> objects) {
-        List<T> all = new ArrayList<>();
-        for (T object : objects) {
-            T saved = save(object);
+    public <S extends T> Iterable<S> saveAll(Iterable<S> objects) {
+        List<S> all = new ArrayList<>();
+        for (S object : objects) {
+            S saved = save(object);
             all.add(saved);
         }
         return all;

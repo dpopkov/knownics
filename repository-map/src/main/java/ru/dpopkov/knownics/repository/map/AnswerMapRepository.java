@@ -20,7 +20,7 @@ public class AnswerMapRepository extends AbstractMapRepository<Answer> implement
     }
 
     @Override
-    public Answer save(Answer answer) {
+    public <S extends Answer> S save(S answer) {
         if (answer.getCreatedBy() == null || answer.getCreatedBy().getId() == null) {
             throw new IllegalStateException("Field createdBy should contain existing User");
         }

@@ -20,6 +20,12 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- Spring Context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
         <!-- JUnit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

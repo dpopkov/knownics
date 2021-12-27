@@ -14,7 +14,7 @@ public class DeckMapRepository extends AbstractMapRepository<Deck> implements De
     }
 
     @Override
-    public Deck save(Deck object) {
+    public <S extends Deck> S save(S object) {
         for (FlashCard card : object.getFlashCards()) {
             if (card.getId() == null) {
                 flashCardRepository.save(card);
