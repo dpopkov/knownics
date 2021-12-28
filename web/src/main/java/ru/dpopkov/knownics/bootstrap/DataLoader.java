@@ -15,6 +15,12 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        if (categoryService.count() == 0) {
+            loadCategories();
+        }
+    }
+
+    private void loadCategories() {
         Category cat1 = new Category("Java Core");
         Category cat2 = new Category("Spring Framework");
         categoryService.save(cat1);

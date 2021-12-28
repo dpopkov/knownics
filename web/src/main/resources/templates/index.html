@@ -12,13 +12,17 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>Category name</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Created</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="cat : ${categories}">
         <td th:text="${cat.id}">id</td>
         <td th:text="${cat.name}">name</td>
+        <td th:text="${cat.description}">description</td>
+        <td th:text="${cat.created}">created on</td>
     </tr>
     </tbody>
 </table>
