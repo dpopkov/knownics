@@ -6,6 +6,7 @@ History of implementation
 * Add Profiles. Closes #12.
 * Add data.sql to populate database in repository-jpa profile.
 * Add findByDescription to CategoryRepository, add Integration Test for CategoryJpaRepository.
+* Configure Maven Failsafe plugin for Integration Tests. Closes #13.
 ##### 2021-12-26
 * Add module services. Add CategoryService, CategoryServiceImpl.
 * Implement equals and hashCode for entities. Closes #9.

@@ -27,12 +27,4 @@ class CategoryJpaRepositoryIT {
         assertEquals("Spring", spring.getName());
         assertEquals("Spring Framework", spring.getDescription());
     }
-
-    @Test
-    void testFindByDescription2() {
-        assertEquals(4, repository.count());
-        final Category spring = repository.findByDescription("Java Standard Edition").orElseThrow();
-        assertEquals("JavaSE", spring.getName());
-        assertEquals("Java Standard Edition", spring.getDescription());
-    }
 }

@@ -7,7 +7,7 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles(Profiles.REPOSITORY_JPA)
 //@ActiveProfiles(Profiles.REPOSITORY_MAP)
 @SpringBootTest
-class KnownicsApplicationTests {
+class KnownicsApplicationIT {
 
     @Test
     void contextLoads() {
