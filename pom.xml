@@ -4,9 +4,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>domain</module>
-        <module>web</module>
         <module>repository-map</module>
+        <module>repository-jpa</module>
         <module>services</module>
+        <module>web</module>
     </modules>
 
     <parent>

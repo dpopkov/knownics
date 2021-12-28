@@ -2,6 +2,9 @@ package ru.dpopkov.knownics.domain.question;
 
 import ru.dpopkov.knownics.domain.ModifiableEntity;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Category extends ModifiableEntity {
 
     private String name;

@@ -1,6 +1,9 @@
 History of implementation
 -------------------------
 
+##### 2021-12-28
+* Add module repository-jpa. Closes #11.
+* Add Profiles. Closes #12.
 ##### 2021-12-26
 * Add module services. Add CategoryService, CategoryServiceImpl.
 * Implement equals and hashCode for entities. Closes #9.

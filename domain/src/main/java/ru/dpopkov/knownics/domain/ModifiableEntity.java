@@ -1,7 +1,9 @@
 package ru.dpopkov.knownics.domain;
 
+import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
+@MappedSuperclass
 public abstract class ModifiableEntity extends BaseEntity {
 
     protected LocalDateTime created = LocalDateTime.now();

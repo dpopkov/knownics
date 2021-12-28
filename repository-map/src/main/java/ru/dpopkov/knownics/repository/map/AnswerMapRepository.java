@@ -1,5 +1,6 @@
 package ru.dpopkov.knownics.repository.map;
 
+import org.springframework.context.annotation.Profile;
 import ru.dpopkov.knownics.domain.KeyTerm;
 import ru.dpopkov.knownics.domain.KeyTermRepository;
 import ru.dpopkov.knownics.domain.answer.Answer;
@@ -9,6 +10,7 @@ import ru.dpopkov.knownics.domain.answer.SourceDetailsRepository;
 
 import java.util.Set;
 
+@Profile(Profiles.REPOSITORY_MAP)
 public class AnswerMapRepository extends AbstractMapRepository<Answer> implements AnswerRepository {
 
     private final SourceDetailsRepository sourceDetailsRepository;
