@@ -1,6 +1,8 @@
 History of implementation
 -------------------------
 
+##### 2021-12-29
+* Add i18n for web. Closes #14. 
 ##### 2021-12-28
 * Add module repository-jpa. Closes #11.
 * Add Profiles. Closes #12.

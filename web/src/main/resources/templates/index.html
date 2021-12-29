@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
 <body>
 
-<h3>Categories</h3>
+<h3 th:text="#{categories}">Categories</h3>
 
 <table>
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Created</th>
+        <th th:text="#{id}">ID</th>
+        <th th:text="#{name}">Name</th>
+        <th th:text="#{description}">Description</th>
+        <th th:text="#{created}">Created</th>
     </tr>
     </thead>
     <tbody>
