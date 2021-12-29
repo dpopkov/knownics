@@ -1,7 +1,11 @@
 package ru.dpopkov.knownics.domain.answer;
 
+import lombok.Getter;
+import lombok.Setter;
 import ru.dpopkov.knownics.domain.ModifiableEntity;
 
+@Getter
+@Setter
 public class Source extends ModifiableEntity {
 
     private String title;

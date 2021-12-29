@@ -1,7 +1,11 @@
 package ru.dpopkov.knownics.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import ru.dpopkov.knownics.domain.user.AppUser;
 
+@Getter
+@Setter
 public abstract class AbstractTranslation extends ModifiableComponent implements Translation {
 
     private Language language;
@@ -17,49 +21,6 @@ public abstract class AbstractTranslation extends ModifiableComponent implements
         this.language = language;
         this.type = type;
         this.text = text;
-    }
-
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
-
-    public void setType(TextType type) {
-        this.type = type;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    @Override
-    public Language getLanguage() {
-        return language;
-    }
-
-    @Override
-    public TextType getType() {
-        return type;
-    }
-
-    @Override
-    public String getText() {
-        return text;
-    }
-
-    public AppUser getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(AppUser createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public AppUser getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(AppUser modifiedBy) {
-        this.modifiedBy = modifiedBy;
     }
 
     @Override

@@ -1,5 +1,8 @@
 package ru.dpopkov.knownics.domain.answer;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 import ru.dpopkov.knownics.domain.KeyTerm;
 import ru.dpopkov.knownics.domain.Language;
 import ru.dpopkov.knownics.domain.ModifiableEntity;
@@ -10,6 +13,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+@Getter
+@Setter
 public class Answer extends ModifiableEntity {
 
     private AnswerType type;
@@ -23,67 +28,12 @@ public class Answer extends ModifiableEntity {
     public Answer() {
     }
 
+    @Builder
     public Answer(AnswerType type, SourceDetails sourceDetails, String comment, AppUser createdBy, AppUser modifiedBy) {
         this.type = type;
         this.sourceDetails = sourceDetails;
         this.comment = comment;
         this.createdBy = createdBy;
-        this.modifiedBy = modifiedBy;
-    }
-
-    public AnswerType getType() {
-        return type;
-    }
-
-    public void setType(AnswerType type) {
-        this.type = type;
-    }
-
-    public Map<Language, AnswerText> getTranslations() {
-        return translations;
-    }
-
-    public void setTranslations(Map<Language, AnswerText> translations) {
-        this.translations = translations;
-    }
-
-    public SourceDetails getSourceDetails() {
-        return sourceDetails;
-    }
-
-    public void setSourceDetails(SourceDetails sourceDetails) {
-        this.sourceDetails = sourceDetails;
-    }
-
-    public Set<KeyTerm> getKeyTerms() {
-        return keyTerms;
-    }
-
-    public void setKeyTerms(Set<KeyTerm> keyTerms) {
-        this.keyTerms = keyTerms;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public AppUser getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(AppUser createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public AppUser getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(AppUser modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
 

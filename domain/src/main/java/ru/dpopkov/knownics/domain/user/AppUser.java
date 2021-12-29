@@ -1,7 +1,11 @@
 package ru.dpopkov.knownics.domain.user;
 
+import lombok.Getter;
+import lombok.Setter;
 import ru.dpopkov.knownics.domain.ModifiableEntity;
 
+@Getter
+@Setter
 public class AppUser extends ModifiableEntity {
 
     private String username;
@@ -10,14 +14,6 @@ public class AppUser extends ModifiableEntity {
     }
 
     public AppUser(String username) {
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
         this.username = username;
     }
 

@@ -1,7 +1,11 @@
 package ru.dpopkov.knownics.domain.answer;
 
+import lombok.Getter;
+import lombok.Setter;
 import ru.dpopkov.knownics.domain.ModifiableEntity;
 
+@Getter
+@Setter
 public class SourceDetails extends ModifiableEntity {
 
     private Source source;
@@ -9,22 +13,6 @@ public class SourceDetails extends ModifiableEntity {
 
     public SourceDetails(Source source, String details) {
         this.source = source;
-        this.details = details;
-    }
-
-    public Source getSource() {
-        return source;
-    }
-
-    public void setSource(Source source) {
-        this.source = source;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
         this.details = details;
     }
 
