@@ -3,6 +3,7 @@ package ru.dpopkov.knownics.domain;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
@@ -11,6 +12,11 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class ModifiableEntity extends BaseEntity {
 
-    protected LocalDateTime created = LocalDateTime.now();
-    protected LocalDateTime modified;
+    @Column(name = "CREATED_ON")
+    @org.hibernate.annotations.CreationTimestamp
+    protected LocalDateTime createdOn;
+
+    @Column(name = "MODIFIED_ON")
+    @org.hibernate.annotations.UpdateTimestamp
+    protected LocalDateTime modifiedOn;
 }
