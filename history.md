@@ -2,7 +2,8 @@ History of implementation
 -------------------------
 
 ##### 2021-12-31
-* Add annotations to domain entities and embedded components. Closes #16. 
+* Add annotations to domain entities and embedded components. Closes #16.
+* Load questions in DataLoader.
 ##### 2021-12-29
 * Add i18n for web. Closes #14. 
 * Refactor to Lombok. Closes #15. 
