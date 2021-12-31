@@ -4,9 +4,16 @@ import ru.dpopkov.knownics.domain.AbstractTranslation;
 import ru.dpopkov.knownics.domain.Language;
 import ru.dpopkov.knownics.domain.TextType;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class AnswerText extends AbstractTranslation {
 
     public AnswerText() {
+    }
+
+    public AnswerText(Language language, String text) {
+        super(language, text);
     }
 
     public AnswerText(Language language, TextType type, String text) {

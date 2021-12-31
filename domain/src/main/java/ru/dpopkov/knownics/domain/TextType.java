@@ -5,5 +5,6 @@ package ru.dpopkov.knownics.domain;
  */
 public enum TextType {
     PLAINTEXT,
-    MARKDOWN
+    MARKDOWN,
+    HTML
 }

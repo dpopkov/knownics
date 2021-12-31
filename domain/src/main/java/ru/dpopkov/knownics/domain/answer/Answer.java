@@ -8,6 +8,8 @@ import ru.dpopkov.knownics.domain.Language;
 import ru.dpopkov.knownics.domain.ModifiableEntity;
 import ru.dpopkov.knownics.domain.user.AppUser;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -15,26 +17,39 @@ import java.util.Set;
 
 @Getter
 @Setter
+@Entity
 public class Answer extends ModifiableEntity {
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
     private AnswerType type;
+
+    @ElementCollection
+    @CollectionTable(name = "ANSWER_TRANSLATIONS")
+    @MapKeyColumn(name = "LANGUAGE")
     private Map<Language, AnswerText> translations = new HashMap<>();
+
+    @OneToOne
     private SourceDetails sourceDetails;
+
+    @ManyToMany
     private Set<KeyTerm> keyTerms = new HashSet<>();
     private String comment;
+
+    @ManyToOne
     private AppUser createdBy;
+    @ManyToOne
     private AppUser modifiedBy;
 
     public Answer() {
     }
 
     @Builder
-    public Answer(AnswerType type, SourceDetails sourceDetails, String comment, AppUser createdBy, AppUser modifiedBy) {
+    public Answer(AnswerType type, SourceDetails sourceDetails, String comment, AppUser createdBy) {
         this.type = type;
         this.sourceDetails = sourceDetails;
         this.comment = comment;
         this.createdBy = createdBy;
-        this.modifiedBy = modifiedBy;
     }
 
     public void addTranslation(AnswerText translation) {

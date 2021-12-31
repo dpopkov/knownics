@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
+import ru.dpopkov.knownics.domain.BaseEntity;
 import ru.dpopkov.knownics.domain.question.Category;
 
 import java.time.LocalDateTime;
@@ -15,11 +16,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @ActiveProfiles(Profiles.REPOSITORY_JPA)
-@EntityScan(basePackageClasses = {Category.class})
+@EntityScan(basePackageClasses = {BaseEntity.class})
 @Sql(scripts = {"/categories.sql"})
 class CategoryJpaRepositoryIT {
 
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection") // fixed by adding DataModuleTestConfiguration
+    /** Autowiring fixed by adding {@link ModuleTestConfiguration}. */
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     CategoryJpaRepository repository;
 

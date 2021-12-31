@@ -4,10 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.dpopkov.knownics.domain.ModifiableEntity;
 
+import javax.persistence.Entity;
+import javax.validation.constraints.NotEmpty;
+
 @Getter
 @Setter
+@Entity
 public class AppUser extends ModifiableEntity {
 
+    @NotEmpty
     private String username;
 
     public AppUser() {

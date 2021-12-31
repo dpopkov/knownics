@@ -5,13 +5,21 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.dpopkov.knownics.domain.user.AppUser;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+
 @Getter
 @Setter
+@Entity
 public class KeyTerm extends ModifiableEntity {
 
+    @NotEmpty
     private String name;
     private String description;
+    @ManyToOne
     private AppUser createdBy;
+    @ManyToOne
     private AppUser modifiedBy;
 
     public KeyTerm() {

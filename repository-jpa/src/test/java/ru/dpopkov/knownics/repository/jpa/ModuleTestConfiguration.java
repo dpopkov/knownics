@@ -5,5 +5,5 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 @SpringBootConfiguration
 @EnableAutoConfiguration
-public class DataModuleTestConfiguration {
+public class ModuleTestConfiguration {
 }

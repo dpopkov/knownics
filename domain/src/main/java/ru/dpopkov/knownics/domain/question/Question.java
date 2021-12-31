@@ -3,11 +3,12 @@ package ru.dpopkov.knownics.domain.question;
 import lombok.Getter;
 import lombok.Setter;
 import ru.dpopkov.knownics.domain.KeyTerm;
-import ru.dpopkov.knownics.domain.ModifiableEntity;
 import ru.dpopkov.knownics.domain.Language;
+import ru.dpopkov.knownics.domain.ModifiableEntity;
 import ru.dpopkov.knownics.domain.answer.Answer;
 import ru.dpopkov.knownics.domain.user.AppUser;
 
+import javax.persistence.*;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -15,16 +16,37 @@ import java.util.Set;
 
 @Getter
 @Setter
+@Entity
 public class Question extends ModifiableEntity {
 
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
+
+    @ElementCollection
+    @CollectionTable(name = "QUESTION_TRANSLATIONS")
+    @MapKeyColumn(name = "LANGUAGE")
     private Map<Language, QuestionText> translations = new HashMap<>();
+
+    @OneToMany
     private Set<Answer> answers = new HashSet<>();
+
+    @OneToOne
     private Answer preferredAnswer;
+
+    @ManyToMany
     private Set<KeyTerm> keyTerms = new HashSet<>();
+
     private String comment;
+
+    @ManyToOne
     private AppUser createdBy;
+
+    @ManyToOne
     private AppUser modifiedBy;
+
+    public void addTranslation(QuestionText translation) {
+        translations.put(translation.getLanguage(), translation);
+    }
 
     @Override
     public boolean equals(Object o) {

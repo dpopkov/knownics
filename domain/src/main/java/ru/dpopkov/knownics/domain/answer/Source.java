@@ -4,15 +4,29 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.dpopkov.knownics.domain.ModifiableEntity;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
+@Entity
 public class Source extends ModifiableEntity {
 
+    @NotEmpty
     private String title;
     private String fullTitle;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
     private SourceType type;
     private String url;
     private String description;
+
+    public Source() {
+    }
 
     public Source(String title) {
         this.title = title;
