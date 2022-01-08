@@ -23,6 +23,7 @@ public abstract class AbstractTranslation extends ModifiableComponent implements
     private TextType type;
     @NotEmpty
     @Column(nullable = false)
+    @Lob
     private String text;
     @NotNull
     @ManyToOne

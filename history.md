@@ -1,6 +1,9 @@
 History of implementation
 -------------------------
 
+##### 2022-01-08
+* Add @Lob to text field in Translations
+
 ##### 2021-12-31
 * Add annotations to domain entities and embedded components. Closes #16.
 * Load questions in DataLoader.
