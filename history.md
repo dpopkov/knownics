@@ -1,6 +1,9 @@
 History of implementation
 -------------------------
 
+##### 2022-01-18
+* Add DTO for Category
+
 ##### 2022-01-08
 * Add @Lob to text field in Translations
 

@@ -6,6 +6,7 @@ import ru.dpopkov.knownics.domain.Language;
 import ru.dpopkov.knownics.domain.question.Category;
 import ru.dpopkov.knownics.domain.question.Question;
 import ru.dpopkov.knownics.domain.question.QuestionText;
+import ru.dpopkov.knownics.dto.converters.CategoryToDto;
 import ru.dpopkov.knownics.services.CategoryService;
 import ru.dpopkov.knownics.services.QuestionService;
 
@@ -13,10 +14,12 @@ import ru.dpopkov.knownics.services.QuestionService;
 public class DataLoader implements CommandLineRunner {
     private final CategoryService categoryService;
     private final QuestionService questionService;
+    private final CategoryToDto toDtoConverter;
 
-    public DataLoader(CategoryService categoryService, QuestionService questionService) {
+    public DataLoader(CategoryService categoryService, QuestionService questionService, CategoryToDto toDtoConverter) {
         this.categoryService = categoryService;
         this.questionService = questionService;
+        this.toDtoConverter = toDtoConverter;
     }
 
     @Override
@@ -32,8 +35,8 @@ public class DataLoader implements CommandLineRunner {
     private void loadCategories() {
         Category cat1 = new Category("JavaSE", "Java Standard Edition");
         Category cat2 = new Category("Spring", "Spring Framework");
-        categoryService.save(cat1);
-        categoryService.save(cat2);
+        categoryService.save(toDtoConverter.convert(cat1));
+        categoryService.save(toDtoConverter.convert(cat2));
         System.out.println("Categories loaded...");
     }
 

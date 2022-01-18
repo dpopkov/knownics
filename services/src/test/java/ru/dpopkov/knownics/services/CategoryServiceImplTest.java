@@ -9,8 +9,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.dpopkov.knownics.domain.question.Category;
 import ru.dpopkov.knownics.domain.question.CategoryRepository;
+import ru.dpopkov.knownics.dto.CategoryDto;
+import ru.dpopkov.knownics.dto.converters.CategoryToDto;
+import ru.dpopkov.knownics.dto.converters.DtoToCategory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,24 +25,35 @@ import static org.mockito.BDDMockito.then;
 class CategoryServiceImplTest {
     @Mock
     CategoryRepository repository;
+    @Mock
+    CategoryToDto toDtoConverter;
+    @Mock
+    DtoToCategory fromDtoConverter;
     @InjectMocks
     CategoryServiceImpl service;
     @Mock
-    Category category;
+    CategoryDto categoryDto;
     @Captor
     ArgumentCaptor<Category> categoryCaptor;
 
     @Test
     void testSave() {
-        given(category.getName()).willReturn("sql");
-        service.save(category);
+        Category category = new Category();
+        category.setName("sql");
+        given(fromDtoConverter.convert(categoryDto)).willReturn(category);
+
+        service.save(categoryDto);
+
         then(repository).should().save(categoryCaptor.capture());
         assertThat(categoryCaptor.getValue().getName()).isEqualTo("sql");
     }
 
     @Test
     void testSaveAll() {
-        service.saveAll(new ArrayList<>());
+        given(fromDtoConverter.convert(categoryDto)).willReturn(new Category());
+
+        service.saveAll(List.of(categoryDto));
+
         then(repository).should().saveAll(any());
     }
 
@@ -49,7 +62,7 @@ class CategoryServiceImplTest {
         List<Category> categories = List.of(new Category(), new Category());
         given(repository.findAll()).willReturn(categories);
 
-        final Iterable<Category> all = service.findAll();
+        final Iterable<CategoryDto> all = service.findAll();
 
         then(repository).should().findAll();
         assertTrue(all.iterator().hasNext());
@@ -64,16 +77,19 @@ class CategoryServiceImplTest {
     }
 
     @Test
-    void testDeleteId() {
+    void testDeleteById() {
         service.deleteById(12L);
         then(repository).should().deleteById(12L);
     }
 
     @Test
     void testDelete() {
-        final Category category = new Category();
-        service.delete(category);
-        then(repository).should().delete(category);
+        final CategoryDto dto = new CategoryDto();
+        dto.setId(12L);
+
+        service.delete(dto);
+
+        then(repository).should().deleteById(12L);
     }
 
     @Test

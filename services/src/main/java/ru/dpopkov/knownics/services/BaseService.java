@@ -1,10 +1,10 @@
 package ru.dpopkov.knownics.services;
 
-import ru.dpopkov.knownics.domain.BaseEntity;
+import ru.dpopkov.knownics.domain.HavingId;
 
 import java.util.Optional;
 
-public interface BaseService<T extends BaseEntity>  {
+public interface BaseService<T extends HavingId>  {
 
     T save(T object);
     Iterable<T> saveAll(Iterable<T> objects);

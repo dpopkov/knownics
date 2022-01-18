@@ -1,6 +1,6 @@
 package ru.dpopkov.knownics.services;
 
-import ru.dpopkov.knownics.domain.question.Category;
+import ru.dpopkov.knownics.dto.CategoryDto;
 
-public interface CategoryService extends BaseService<Category> {
+public interface CategoryService extends BaseService<CategoryDto> {
 }
