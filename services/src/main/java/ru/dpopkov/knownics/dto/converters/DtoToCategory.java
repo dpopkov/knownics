@@ -13,8 +13,6 @@ public class DtoToCategory implements Converter<CategoryDto, Category> {
         category.setId(source.getId());
         category.setName(source.getName());
         category.setDescription(source.getDescription());
-        category.setCreatedOn(source.getCreatedOn());
-        category.setModifiedOn(source.getModifiedOn());
         return category;
     }
 }

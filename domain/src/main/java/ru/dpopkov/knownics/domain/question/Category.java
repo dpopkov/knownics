@@ -42,4 +42,12 @@ public class Category extends ModifiableEntity {
     public int hashCode() {
         return getName() != null ? getName().hashCode() : 0;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                "} " + super.toString();
+    }
 }

@@ -12,11 +12,19 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class ModifiableEntity extends BaseEntity {
 
-    @Column(name = "CREATED_ON")
+    @Column(name = "CREATED_ON", updatable = false)
     @org.hibernate.annotations.CreationTimestamp
     protected LocalDateTime createdOn;
 
     @Column(name = "MODIFIED_ON")
     @org.hibernate.annotations.UpdateTimestamp
     protected LocalDateTime modifiedOn;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "createdOn=" + createdOn +
+                ", modifiedOn=" + modifiedOn +
+                "} " + super.toString();
+    }
 }

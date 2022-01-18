@@ -3,6 +3,7 @@ History of implementation
 
 ##### 2022-01-18
 * Add DTO for Category
+* Research for CreationTimestamp and UpdateTimestamp - Hibernate manages it automatically
 
 ##### 2022-01-08
 * Add @Lob to text field in Translations

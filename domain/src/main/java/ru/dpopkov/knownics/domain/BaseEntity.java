@@ -15,4 +15,9 @@ public abstract class BaseEntity implements HavingId {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Override
+    public String toString() {
+        return "{id=" + id + '}';
+    }
 }
