@@ -11,9 +11,10 @@ import ru.dpopkov.knownics.dto.QuestionDto;
 import ru.dpopkov.knownics.dto.converters.DtoToQuestion;
 import ru.dpopkov.knownics.dto.converters.QuestionToDto;
 
+import java.util.Collection;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -30,13 +31,13 @@ class QuestionServiceImplTest {
     @Test
     void testFindAll() {
         // Given
-        List<Question> questions = List.of(new Question());
+        List<Question> questions = List.of(new Question(), new Question());
         given(repository.findAll()).willReturn(questions);
         given(toDto.convert(any())).willReturn(new QuestionDto());
         // When
-        final Iterable<QuestionDto> all = service.findAll();
+        final Collection<QuestionDto> all = service.findAll();
         // Then
-        assertNotNull(all.iterator().next());
+        assertEquals(2, all.size());
         then(repository).should().findAll();
     }
 }

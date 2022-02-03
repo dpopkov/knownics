@@ -13,10 +13,11 @@ import ru.dpopkov.knownics.dto.CategoryDto;
 import ru.dpopkov.knownics.dto.converters.CategoryToDto;
 import ru.dpopkov.knownics.dto.converters.DtoToCategory;
 
+import java.util.Collection;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
@@ -62,12 +63,10 @@ class CategoryServiceImplTest {
         List<Category> categories = List.of(new Category(), new Category());
         given(repository.findAll()).willReturn(categories);
 
-        final Iterable<CategoryDto> all = service.findAll();
+        final Collection<CategoryDto> all = service.findAll();
 
         then(repository).should().findAll();
-        assertTrue(all.iterator().hasNext());
-        all.iterator().next();
-        assertTrue(all.iterator().hasNext());
+        assertEquals(2, all.size());
     }
 
     @Test

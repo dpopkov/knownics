@@ -6,6 +6,7 @@ import ru.dpopkov.knownics.domain.BaseRepository;
 import ru.dpopkov.knownics.dto.BaseDto;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +30,7 @@ public abstract class AbstractDtoService<T extends BaseEntity, U extends BaseDto
     }
 
     @Override
-    public Iterable<U> saveAll(Iterable<U> objects) {
+    public Collection<U> saveAll(Collection<U> objects) {
         List<T> toSave = new ArrayList<>();
         objects.forEach(dto -> toSave.add(fromDtoConverter.convert(dto)));
         Iterable<T> saved = repository.saveAll(toSave);
@@ -39,7 +40,7 @@ public abstract class AbstractDtoService<T extends BaseEntity, U extends BaseDto
     }
 
     @Override
-    public Iterable<U> findAll() {
+    public Collection<U> findAll() {
         List<U> result = new ArrayList<>();
         repository.findAll().forEach(entity -> result.add(toDtoConverter.convert(entity)));
         return result;
