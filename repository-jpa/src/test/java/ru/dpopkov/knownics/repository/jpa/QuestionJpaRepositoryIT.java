@@ -53,7 +53,13 @@ class QuestionJpaRepositoryIT {
         final Map<Language, QuestionText> translations = found.getTranslations();
         assertEquals(2, translations.size());
         assertTrue(translations.containsKey(Language.EN));
+        QuestionText enQuestionText = translations.get(Language.EN);
+        assertEquals(Language.EN, enQuestionText.getLanguage());
+        assertEquals("What is Java", enQuestionText.getText());
         assertTrue(translations.containsKey(Language.RU));
+        QuestionText ruQuestionText = translations.get(Language.RU);
+        assertEquals(Language.RU, ruQuestionText.getLanguage());
+        assertEquals("Что такое Java", ruQuestionText.getText());
         assertFalse(translations.containsKey(Language.DE));
     }
 

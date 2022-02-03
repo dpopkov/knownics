@@ -12,17 +12,24 @@
     <thead>
     <tr>
         <th th:text="#{id}">ID</th>
-        <th th:text="#{name}">Name</th>
-        <th th:text="#{description}">Description</th>
-        <th th:text="#{created}">Created</th>
+        <th th:text="#{category}">Category</th>
+        <th th:text="#{translations}">Translations</th>
+        <th th:text="#{comment}">Comment</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="cat : ${categories}">
-        <td th:text="${cat.id}">id</td>
-        <td th:text="${cat.name}">name</td>
-        <td th:text="${cat.description}">description</td>
-        <td th:text="${cat.createdOn}">created on</td>
+    <tr th:each="question : ${questions}">
+        <td th:text="${question.id}">id</td>
+        <td th:text="${question.category.name}">category</td>
+        <td>
+            <table>
+                <tr th:each="tr : ${question.translations.values()}">
+                    <td th:text="${tr.language}"></td>
+                    <td th:text="${tr.text}"></td>
+                </tr>
+            </table>
+        </td>
+        <td th:text="${question.comment}">comment</td>
     </tr>
     </tbody>
 </table>

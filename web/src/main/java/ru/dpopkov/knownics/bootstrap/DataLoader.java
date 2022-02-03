@@ -3,54 +3,59 @@ package ru.dpopkov.knownics.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ru.dpopkov.knownics.domain.Language;
-import ru.dpopkov.knownics.domain.question.Category;
-import ru.dpopkov.knownics.domain.question.Question;
-import ru.dpopkov.knownics.domain.question.QuestionText;
-import ru.dpopkov.knownics.dto.CategoryDto;
-import ru.dpopkov.knownics.dto.converters.CategoryToDto;
-import ru.dpopkov.knownics.services.CategoryService;
-import ru.dpopkov.knownics.services.QuestionService;
+import ru.dpopkov.knownics.domain.question.*;
 
 @Component
 public class DataLoader implements CommandLineRunner {
-    private final CategoryService categoryService;
-    private final QuestionService questionService;
-    private final CategoryToDto toDtoConverter;
+    private final CategoryRepository categoryRepository;
+    private final QuestionRepository questionRepository;
 
-    public DataLoader(CategoryService categoryService, QuestionService questionService, CategoryToDto toDtoConverter) {
-        this.categoryService = categoryService;
-        this.questionService = questionService;
-        this.toDtoConverter = toDtoConverter;
+    private Long javaSeCategoryId;
+    private Long springCategoryId;
+
+    public DataLoader(CategoryRepository categoryRepository, QuestionRepository questionRepository) {
+        this.categoryRepository = categoryRepository;
+        this.questionRepository = questionRepository;
     }
+
 
     @Override
     public void run(String... args) {
 //        if (categoryService.count() == 0) {
             loadCategories();
 //        }
-        if (questionService.count() == 0) {
+        if (questionRepository.count() == 0) {
             loadQuestions();
         }
     }
 
     private void loadCategories() {
-        Category cat1 = new Category("JavaSE", "Java Standard Edition");
-        Category cat2 = new Category("Spring", "Spring Framework");
-        CategoryDto saved1 = categoryService.save(toDtoConverter.convert(cat1));
-        CategoryDto saved2 = categoryService.save(toDtoConverter.convert(cat2));
+        Category javaSeCategory = new Category("JavaSE", "Java Standard Edition");
+        Category springCategory = new Category("Spring", "Spring Framework");
+        Category saved1 = categoryRepository.save(javaSeCategory);
+        javaSeCategoryId = saved1.getId();
+        Category saved2 = categoryRepository.save(springCategory);
+        springCategoryId = saved2.getId();
         System.out.println("Categories loaded...");
-        System.out.println("id=" + saved1.getId());
-        System.out.println("id=" + saved2.getId());
+        System.out.println("id=" + javaSeCategoryId);
+        System.out.println("id=" + springCategoryId);
     }
 
     private void loadQuestions() {
         Question spring = new Question();
+        Category springCategory = categoryRepository.findById(springCategoryId).orElseThrow();
+        spring.setCategory(springCategory);
         spring.addTranslation(new QuestionText(Language.EN, "What is Spring"));
         spring.addTranslation(new QuestionText(Language.RU, "Что такое Spring"));
-        questionService.save(spring);
+        spring.setComment("First question");
+        questionRepository.save(spring);
         Question java = new Question();
+        Category javaSeCategory = categoryRepository.findById(javaSeCategoryId).orElseThrow();
+        java.setCategory(javaSeCategory);
         java.addTranslation(new QuestionText(Language.EN, "What is Java"));
         java.addTranslation(new QuestionText(Language.RU, "Что такое Java"));
+        java.setComment("Second question");
+        questionRepository.save(java);
         System.out.println("Questions loaded...");
     }
 }

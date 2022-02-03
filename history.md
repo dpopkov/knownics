@@ -3,6 +3,8 @@ History of implementation
 
 ##### 2022-02-03
 * Add DTO for Question, KeyTerm, Translation
+* Modify QuestionService to return QuestionDto objects
+* Implement controller and view for list of Questions
 
 ##### 2022-01-18
 * Add DTO for Category

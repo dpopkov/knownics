@@ -24,7 +24,7 @@ public class Question extends ModifiableEntity {
 
     @ElementCollection
     @CollectionTable(name = "QUESTION_TRANSLATIONS")
-    @MapKeyColumn(name = "LANGUAGE")
+    @MapKeyEnumerated
     private Map<Language, QuestionText> translations = new HashMap<>();
 
     @OneToMany

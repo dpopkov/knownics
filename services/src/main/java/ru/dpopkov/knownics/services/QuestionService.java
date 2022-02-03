@@ -1,6 +1,6 @@
 package ru.dpopkov.knownics.services;
 
-import ru.dpopkov.knownics.domain.question.Question;
+import ru.dpopkov.knownics.dto.QuestionDto;
 
-public interface QuestionService extends BaseService<Question> {
+public interface QuestionService extends BaseService<QuestionDto> {
 }

@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 public abstract class AbstractTranslation extends ModifiableComponent implements Translation {
 
     @NotNull
-    @Transient  // The language must be persisted as a key annotated in the owning entity
+    @Column(name = "TR_LANGUAGE", nullable = false)
     private Language language;
     @NotNull
     @Column(nullable = false)
