@@ -1,6 +1,9 @@
 History of implementation
 -------------------------
 
+##### 2022-02-03
+* Add DTO for Question, KeyTerm, Translation
+
 ##### 2022-01-18
 * Add DTO for Category
 * Research for CreationTimestamp and UpdateTimestamp - Hibernate manages it automatically
