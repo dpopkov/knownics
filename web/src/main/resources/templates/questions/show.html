@@ -6,22 +6,19 @@
 </head>
 <body>
 
-<h3 th:text="#{questions}">Questions</h3>
+<h3 th:text="#{question}">Question</h3>
 
 <table>
-    <thead>
     <tr>
         <th th:text="#{id}">ID</th>
-        <th th:text="#{category}">Category</th>
-        <th th:text="#{translations}">Translations</th>
-        <th th:text="#{comment}">Comment</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="question : ${questions}">
         <td th:text="${question.id}">id</td>
+    </tr>
+    <tr>
+        <th th:text="#{category}">Category</th>
         <td th:text="${question.category.name}">category</td>
+    </tr>
+    <tr>
+        <th th:text="#{translations}">Translations</th>
         <td>
             <table>
                 <tr th:each="tr : ${question.translations.values()}">
@@ -30,12 +27,11 @@
                 </tr>
             </table>
         </td>
-        <td th:text="${question.comment}">comment</td>
-        <td>
-            <a href="#" th:href="@{'/question/' + ${question.id} + '/show'}" th:text="#{view}">View</a>
-        </td>
     </tr>
-    </tbody>
+    <tr>
+        <th th:text="#{comment}">Comment</th>
+        <td th:text="${question.comment}">comment</td>
+    </tr>
 </table>
 
 </body>
