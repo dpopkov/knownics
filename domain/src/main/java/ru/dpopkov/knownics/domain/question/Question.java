@@ -27,7 +27,9 @@ public class Question extends ModifiableEntity {
     @MapKeyEnumerated
     private Map<Language, QuestionText> translations = new HashMap<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "question",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private Set<Answer> answers = new HashSet<>();
 
     @OneToOne
@@ -46,6 +48,11 @@ public class Question extends ModifiableEntity {
 
     public void addTranslation(QuestionText translation) {
         translations.put(translation.getLanguage(), translation);
+    }
+
+    public void addAnswer(Answer answer) {
+        answers.add(answer);
+        answer.setQuestion(this);
     }
 
     @Override

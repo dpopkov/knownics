@@ -16,12 +16,16 @@ public class QuestionDto extends ModifiableDto {
     @NotNull
     private CategoryDto category;
     private Map<String, TranslationDto> translations = new HashMap<>();
-    private Set<Long> answerIds = new HashSet<>();
+    private Set<AnswerDto> answers = new HashSet<>();
     private Long preferredAnswerId;
     private Set<KeyTermDto> keyTerms = new HashSet<>();
     private String comment;
 
     public void addTranslation(TranslationDto translationDto) {
         translations.put(translationDto.getLanguage(), translationDto);
+    }
+
+    public void addAnswer(AnswerDto answerDto) {
+        answers.add(answerDto);
     }
 }

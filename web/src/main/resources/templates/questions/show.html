@@ -34,5 +34,23 @@
     </tr>
 </table>
 
+<h3 th:text="#{answers}">Answers</h3>
+
+<table>
+    <tbody>
+    <tr th:each="answer : ${question.answers}">
+        <td th:text="${answer.id}">answer id</td>
+        <td>
+            <table>
+                <tr th:each="answerTranslation : ${answer.translations.values()}">
+                    <td th:text="${answerTranslation.language}">language</td>
+                    <td th:text="${answerTranslation.text}">text of answer</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

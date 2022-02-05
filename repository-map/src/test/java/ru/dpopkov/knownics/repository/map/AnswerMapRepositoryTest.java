@@ -9,10 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.dpopkov.knownics.domain.KeyTerm;
 import ru.dpopkov.knownics.domain.KeyTermRepository;
-import ru.dpopkov.knownics.domain.answer.Answer;
-import ru.dpopkov.knownics.domain.answer.Source;
-import ru.dpopkov.knownics.domain.answer.SourceDetails;
-import ru.dpopkov.knownics.domain.answer.SourceDetailsRepository;
+import ru.dpopkov.knownics.domain.answer.*;
 import ru.dpopkov.knownics.domain.user.AppUser;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,7 +32,7 @@ class AnswerMapRepositoryTest {
     void testSave() {
         // Given
         Answer answer = new Answer();
-        SourceDetails details = new SourceDetails(new Source("Spring in Action"), "details");
+        SourceDetails details = new SourceDetails(new Source("Spring in Action", SourceType.BOOK), "details");
         answer.setSourceDetails(details);
         KeyTerm keyTerm = new KeyTerm("Spring", "desc");
         answer.addKeyTerm(keyTerm);

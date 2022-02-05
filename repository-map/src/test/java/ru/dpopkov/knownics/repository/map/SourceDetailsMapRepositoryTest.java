@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ru.dpopkov.knownics.domain.answer.Source;
 import ru.dpopkov.knownics.domain.answer.SourceDetails;
 import ru.dpopkov.knownics.domain.answer.SourceRepository;
+import ru.dpopkov.knownics.domain.answer.SourceType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.then;
@@ -26,7 +27,7 @@ class SourceDetailsMapRepositoryTest {
     @Test
     void testSave() {
         // Given
-        Source source = new Source("source-1");
+        Source source = new Source("source-1", SourceType.BOOK);
         SourceDetails sourceDetails = new SourceDetails(source, "details");
         // When
         sourceDetailsMapRepository.save(sourceDetails);

@@ -28,8 +28,9 @@ public class Source extends ModifiableEntity {
     public Source() {
     }
 
-    public Source(String title) {
+    public Source(String title, SourceType type) {
         this.title = title;
+        this.type = type;
     }
 
     public Source(String title, String fullTitle, SourceType type, String url, String description) {

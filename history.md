@@ -1,6 +1,9 @@
 History of implementation
 -------------------------
 
+##### 2022-02-05
+* Show single Question with properties and Answers. Closes #17.
+
 ##### 2022-02-03
 * Add DTO for Question, KeyTerm, Translation
 * Modify QuestionService to return QuestionDto objects

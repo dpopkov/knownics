@@ -6,6 +6,7 @@ import lombok.Setter;
 import ru.dpopkov.knownics.domain.KeyTerm;
 import ru.dpopkov.knownics.domain.Language;
 import ru.dpopkov.knownics.domain.ModifiableEntity;
+import ru.dpopkov.knownics.domain.question.Question;
 import ru.dpopkov.knownics.domain.user.AppUser;
 
 import javax.persistence.*;
@@ -21,15 +22,19 @@ import java.util.Set;
 public class Answer extends ModifiableEntity {
 
     @NotNull
+    @ManyToOne
+    private Question question;
+
+    @NotNull
     @Enumerated(EnumType.STRING)
     private AnswerType type;
 
     @ElementCollection
     @CollectionTable(name = "ANSWER_TRANSLATIONS")
-    @MapKeyColumn(name = "LANGUAGE")
+    @MapKeyEnumerated
     private Map<Language, AnswerText> translations = new HashMap<>();
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private SourceDetails sourceDetails;
 
     @ManyToMany
@@ -45,7 +50,8 @@ public class Answer extends ModifiableEntity {
     }
 
     @Builder
-    public Answer(AnswerType type, SourceDetails sourceDetails, String comment, AppUser createdBy) {
+    public Answer(Question question, AnswerType type, SourceDetails sourceDetails, String comment, AppUser createdBy) {
+        this.question = question;
         this.type = type;
         this.sourceDetails = sourceDetails;
         this.comment = comment;
